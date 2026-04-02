@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "sessionId": "test-session-001",
+      "fullPath": "/fake/path/test-session-001.jsonl",
+      "fileMtime": 1712079195000,
+      "firstPrompt": "fix the auth bug",
+      "summary": "Fixed authentication middleware issue",
+      "messageCount": 5,
+      "created": "2026-04-01T10:00:00.000Z",
+      "modified": "2026-04-01T10:30:00.000Z",
+      "gitBranch": "main",
+      "projectPath": "/Users/cory/myproject",
+      "isSidechain": false
+    }
+  ]
+}
