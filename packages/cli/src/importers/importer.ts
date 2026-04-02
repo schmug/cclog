@@ -107,77 +107,95 @@ export async function runFullImport(
 
   for (const projectDir of projectDirs) {
     const indexPath = join(projectDir, "sessions-index.json");
-    if (!existsSync(indexPath)) continue;
 
-    let index;
-    try {
-      index = readSessionIndex(indexPath);
-    } catch (err) {
-      console.error(`Failed to read index at ${indexPath}:`, err);
-      continue;
+    // Collect sessions to import: from index if available, otherwise scan for .jsonl files
+    const sessionsToImport: { sessionId: string; jsonlPath: string; mtime: number; summary?: string; projectPath?: string; created?: string; isSidechain?: boolean }[] = [];
+
+    if (existsSync(indexPath)) {
+      let index;
+      try {
+        index = readSessionIndex(indexPath);
+      } catch (err) {
+        console.error(`Failed to read index at ${indexPath}:`, err);
+        continue;
+      }
+
+      for (const entry of index.entries) {
+        // Resolve JSONL file path — try fullPath first, then local
+        let jsonlPath: string | undefined;
+        if (entry.fullPath && existsSync(entry.fullPath)) {
+          jsonlPath = entry.fullPath;
+        } else {
+          const localPath = join(projectDir, `${entry.sessionId}.jsonl`);
+          if (existsSync(localPath)) jsonlPath = localPath;
+        }
+
+        if (jsonlPath) {
+          sessionsToImport.push({
+            sessionId: entry.sessionId,
+            jsonlPath,
+            mtime: entry.fileMtime,
+            summary: entry.summary,
+            projectPath: entry.projectPath,
+            created: entry.created,
+            isSidechain: entry.isSidechain,
+          });
+        }
+      }
     }
 
-    for (const entry of index.entries) {
+    // Also scan for .jsonl files not in the index (many projects have no index)
+    try {
+      const files = readdirSync(projectDir);
+      const indexedIds = new Set(sessionsToImport.map((s) => s.sessionId));
+
+      for (const file of files) {
+        if (!file.endsWith(".jsonl")) continue;
+        const sessionId = file.replace(".jsonl", "");
+        if (indexedIds.has(sessionId)) continue;
+
+        const jsonlPath = join(projectDir, file);
+        const stat = statSync(jsonlPath);
+        sessionsToImport.push({
+          sessionId,
+          jsonlPath,
+          mtime: stat.mtimeMs,
+        });
+      }
+    } catch {
+      // Skip unreadable directories
+    }
+
+    for (const entry of sessionsToImport) {
       try {
-        // Filter by project path if requested
-        if (
-          options.projectFilter &&
-          entry.projectPath !== options.projectFilter
-        ) {
+        // Apply filters
+        if (options.projectFilter && entry.projectPath && !entry.projectPath.includes(options.projectFilter)) {
           skipped++;
           continue;
         }
-
-        // Filter by since date
-        if (options.sinceDate && entry.created < options.sinceDate) {
+        if (options.sinceDate && entry.created && entry.created < options.sinceDate) {
           skipped++;
           continue;
         }
-
-        // Skip sidechains
         if (entry.isSidechain) {
           skipped++;
           continue;
         }
 
-        // Check if already imported at same or newer mtime
+        // Check incremental import state
         const mtimeKey = `mtime:${entry.sessionId}`;
         const storedMtime = getImportState(db, mtimeKey);
-        const entryMtime = String(entry.fileMtime);
+        const entryMtime = String(entry.mtime);
         if (storedMtime !== undefined && storedMtime >= entryMtime) {
           skipped++;
           continue;
         }
 
-        // Resolve JSONL file path
-        let jsonlPath: string;
-        if (entry.fullPath && existsSync(entry.fullPath)) {
-          jsonlPath = entry.fullPath;
-        } else {
-          jsonlPath = join(projectDir, `${entry.sessionId}.jsonl`);
-        }
-
-        if (!existsSync(jsonlPath)) {
-          console.error(`JSONL file not found for session ${entry.sessionId}`);
-          skipped++;
-          continue;
-        }
-
-        importSession(
-          db,
-          entry.sessionId,
-          jsonlPath,
-          options.userId,
-          entry.summary
-        );
-
+        importSession(db, entry.sessionId, entry.jsonlPath, options.userId, entry.summary);
         setImportState(db, mtimeKey, entryMtime);
         imported++;
       } catch (err) {
-        console.error(
-          `Error importing session ${entry.sessionId}:`,
-          err
-        );
+        console.error(`Error importing session ${entry.sessionId}:`, err);
         skipped++;
       }
     }
