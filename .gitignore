@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.next/
+*.db
+.turbo/
+.superpowers/
+.env
+.env.local

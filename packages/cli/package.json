@@ -1,0 +1,27 @@
+{
+  "name": "@cc-timetravel/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "cc-timetravel": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@cc-timetravel/shared": "*",
+    "better-sqlite3": "^11.9.0",
+    "commander": "^13.1.0",
+    "glob": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "tsx": "^4.19.0",
+    "vitest": "^3.1.0"
+  }
+}
