@@ -1,10 +1,10 @@
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { homedir } from "os";
 import { join, dirname } from "path";
-import { AppConfig, DEFAULT_CONFIG } from "@cc-timetravel/shared";
+import { AppConfig, DEFAULT_CONFIG } from "@cclog/shared";
 
 export function getConfigPath(): string {
-  return join(homedir(), ".config", "cc-timetravel", "config.json");
+  return join(homedir(), ".config", "cclog", "config.json");
 }
 
 export function loadConfig(): AppConfig {

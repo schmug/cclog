@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import type { SessionIndexFile } from "@cc-timetravel/shared";
+import type { SessionIndexFile } from "@cclog/shared";
 
 export function readSessionIndex(filePath: string): SessionIndexFile {
   const content = readFileSync(filePath, "utf-8");

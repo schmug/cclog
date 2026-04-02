@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
-import type { SessionRow, MessageRow, ToolUseRow } from "@cc-timetravel/shared";
+import type { SessionRow, MessageRow, ToolUseRow } from "@cclog/shared";
 
 export function GET(
   _req: NextRequest,

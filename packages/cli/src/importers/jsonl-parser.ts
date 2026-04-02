@@ -1,4 +1,4 @@
-import { computeCost } from "@cc-timetravel/shared";
+import { computeCost } from "@cclog/shared";
 import type {
   JournalEntry,
   UserEntry,
@@ -7,7 +7,7 @@ import type {
   SessionRow,
   MessageRow,
   ToolUseRow,
-} from "@cc-timetravel/shared";
+} from "@cclog/shared";
 
 /**
  * Parses a JSONL string into an array of typed JournalEntry objects.

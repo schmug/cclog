@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import { loadConfig, saveConfig, getConfigPath } from "../config.js";
-import { AppConfig } from "@cc-timetravel/shared";
+import { AppConfig } from "@cclog/shared";
 
 export const configCommand = new Command("config")
   .description("View or modify configuration")

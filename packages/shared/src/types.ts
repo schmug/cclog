@@ -277,6 +277,6 @@ export const DEFAULT_CONFIG: AppConfig = {
   },
   import: {
     claudeDir: "~/.claude",
-    dbPath: "~/.cc-timetravel/db.sqlite",
+    dbPath: "~/.cclog/db.sqlite",
   },
 };

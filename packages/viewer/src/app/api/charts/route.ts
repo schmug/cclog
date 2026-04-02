@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
-import type { ChartDataPoint, ToolBreakdown } from "@cc-timetravel/shared";
+import type { ChartDataPoint, ToolBreakdown } from "@cclog/shared";
 
 export function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { formatTokens, formatCost, formatDuration, formatRelativeTime } from "@/lib/format";
-import type { SessionRow } from "@cc-timetravel/shared";
+import type { SessionRow } from "@cclog/shared";
 
 type SortColumn = "created_at" | "total_cost" | "message_count" | "total_input_tokens" | "duration_seconds";
 type SortDir = "asc" | "desc";

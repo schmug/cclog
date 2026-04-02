@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
-import type { SessionRow } from "@cc-timetravel/shared";
+import type { SessionRow } from "@cclog/shared";
 
 const ALLOWED_SORT_COLUMNS = new Set([
   "created_at",

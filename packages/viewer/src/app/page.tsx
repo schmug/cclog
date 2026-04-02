@@ -7,7 +7,7 @@ import StatCard from "@/components/stat-card";
 import UsageChart from "@/components/charts/usage-chart";
 import ToolBreakdownChart from "@/components/charts/tool-breakdown";
 import { formatTokens, formatCost, formatDuration, formatRelativeTime } from "@/lib/format";
-import type { ChartDataPoint, ToolBreakdown, SessionRow } from "@cc-timetravel/shared";
+import type { ChartDataPoint, ToolBreakdown, SessionRow } from "@cclog/shared";
 
 interface StatsData {
   sessions: number;

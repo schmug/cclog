@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { formatTokens, formatCost, formatDuration, formatRelativeTime } from "@/lib/format";
-import type { SessionRow, MessageRow, ToolUseRow } from "@cc-timetravel/shared";
+import type { SessionRow, MessageRow, ToolUseRow } from "@cclog/shared";
 
 interface SessionDetail {
   session: SessionRow;

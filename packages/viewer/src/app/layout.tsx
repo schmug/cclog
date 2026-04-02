@@ -3,7 +3,7 @@ import "./globals.css";
 import Nav from "@/components/layout/nav";
 
 export const metadata: Metadata = {
-  title: "cc-timetravel",
+  title: "cclog",
   description: "Claude Code session explorer",
 };
 

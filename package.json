@@ -1,5 +1,5 @@
 {
-  "name": "cc-timetravel",
+  "name": "cclog",
   "private": true,
   "packageManager": "npm@11.6.1",
   "workspaces": ["packages/*"],

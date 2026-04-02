@@ -4,7 +4,7 @@ import type {
   MessageRow,
   ToolUseRow,
   DashboardStats,
-} from "@cc-timetravel/shared";
+} from "@cclog/shared";
 
 // ---------------------------------------------------------------------------
 // StatsFilters

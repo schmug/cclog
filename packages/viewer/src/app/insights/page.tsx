@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { formatCost, formatRelativeTime } from "@/lib/format";
-import type { InsightRow } from "@cc-timetravel/shared";
+import type { InsightRow } from "@cclog/shared";
 
 interface InsightsData {
   expensiveSessions: {

@@ -8,7 +8,7 @@ import { serveCommand } from "./commands/serve.js";
 import { configCommand } from "./commands/config.js";
 
 const program = new Command()
-  .name("cc-timetravel")
+  .name("cclog")
   .description(
     "Claude Code history viewer — analytics, search, and LLM insights"
   )

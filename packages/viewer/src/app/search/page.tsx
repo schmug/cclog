@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import SearchResults from "@/components/search-results";
-import type { SearchResult } from "@cc-timetravel/shared";
+import type { SearchResult } from "@cclog/shared";
 
 type Mode = "keyword" | "semantic";
 

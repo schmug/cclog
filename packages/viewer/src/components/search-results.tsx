@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { formatCost, formatRelativeTime } from "@/lib/format";
-import type { SearchResult } from "@cc-timetravel/shared";
+import type { SearchResult } from "@cclog/shared";
 
 interface SearchResultsProps {
   results: SearchResult[];

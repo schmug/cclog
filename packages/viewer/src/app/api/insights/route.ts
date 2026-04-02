@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
-import type { InsightRow } from "@cc-timetravel/shared";
+import type { InsightRow } from "@cclog/shared";
 
 export function GET() {
   const db = getDb();

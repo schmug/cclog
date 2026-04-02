@@ -1,4 +1,4 @@
-import type { ToolBreakdown } from "@cc-timetravel/shared";
+import type { ToolBreakdown } from "@cclog/shared";
 
 interface ToolBreakdownProps {
   data: ToolBreakdown[];

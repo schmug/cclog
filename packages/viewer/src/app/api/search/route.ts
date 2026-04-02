@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
-import type { SearchResult } from "@cc-timetravel/shared";
+import type { SearchResult } from "@cclog/shared";
 
 export function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
@@ -15,7 +15,7 @@ export function GET(req: NextRequest) {
   if (mode === "semantic") {
     return NextResponse.json({
       results: [],
-      message: "Semantic search requires embeddings to be generated. Run 'cc-timetravel embed' first.",
+      message: "Semantic search requires embeddings to be generated. Run 'cclog embed' first.",
     });
   }
 

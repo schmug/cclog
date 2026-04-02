@@ -1,4 +1,4 @@
-import type { AppConfig } from "@cc-timetravel/shared";
+import type { AppConfig } from "@cclog/shared";
 import type { LLMProvider } from "./interface.js";
 import { OllamaProvider } from "./ollama.js";
 

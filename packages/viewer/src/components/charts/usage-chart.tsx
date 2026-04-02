@@ -8,7 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import type { ChartDataPoint } from "@cc-timetravel/shared";
+import type { ChartDataPoint } from "@cclog/shared";
 
 interface UsageChartProps {
   data: ChartDataPoint[];

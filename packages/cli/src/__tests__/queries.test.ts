@@ -10,7 +10,7 @@ import {
   getImportState,
   setImportState,
 } from "../db/queries.js";
-import type { SessionRow, MessageRow, ToolUseRow } from "@cc-timetravel/shared";
+import type { SessionRow, MessageRow, ToolUseRow } from "@cclog/shared";
 
 let db: Database.Database;
 

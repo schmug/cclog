@@ -1,5 +1,5 @@
 {
-  "name": "@cc-timetravel/viewer",
+  "name": "@cclog/viewer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@cc-timetravel/shared": "*",
+    "@cclog/shared": "*",
     "better-sqlite3": "^11.9.0",
     "next": "^15.3.0",
     "react": "^19.1.0",

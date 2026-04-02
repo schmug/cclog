@@ -34,7 +34,7 @@ export default function Nav() {
           marginRight: "8px",
         }}
       >
-        ▣ cc-timetravel
+        ▣ cclog
       </span>
       {tabs.map((tab) => {
         const isActive =
